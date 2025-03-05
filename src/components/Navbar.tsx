@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Home, Bed, Camera, Phone, Variable as Safari, Image } from 'lucide-react';
+import { Menu, X, Home, Bed, Phone, Variable as Safari, Image } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../assets/images/logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,14 +36,15 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
+          {/* Logo Section */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="flex items-center"
           >
             <Link to="/" className="flex items-center">
-              <Camera className={`h-8 w-8 ${scrolled ? 'text-indigo-600' : 'text-white'}`} />
-              <span className={`ml-2 text-xl font-bold ${scrolled ? 'text-gray-800' : 'text-white'}`}>
+              <img src={logo} alt="Shehan Guest House Logo" className="h-10 w-auto mr-2" />
+              <span className={`text-xl font-bold ${scrolled ? 'text-gray-800' : 'text-white'}`}>
                 Shehan Guest House
               </span>
             </Link>

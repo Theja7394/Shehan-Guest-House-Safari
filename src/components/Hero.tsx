@@ -28,8 +28,8 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl"
           >
-            <span className="block">Experience Luxury</span>
-            <span className="block text-indigo-400">in the Heart of Nature</span>
+            <span className="block">Nature’s Embrace, </span>
+            <span className="block text-indigo-400">Your Perfect Stay</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -37,8 +37,8 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-6 text-xl text-gray-300 max-w-2xl"
           >
-            Discover the perfect blend of comfort and adventure at Shehan Guest House & Safari. 
-            Immerse yourself in nature while enjoying premium amenities and exceptional service.
+            At Shehan Guest House & Safari, wake up to the beauty of nature and relax in cozy comfort. Whether you're here for a thrilling safari or a peaceful retreat, 
+            we promise an unforgettable stay with all the little luxuries you deserve.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
