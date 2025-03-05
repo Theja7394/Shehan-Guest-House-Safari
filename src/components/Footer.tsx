@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Camera } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Logo from '../assets/images/logo.png';
 
 const Footer = () => {
   const quickLinks = [
-    { name: 'About Us', href: '/about' },
     { name: 'Rooms', href: '/rooms' },
     { name: 'Safari Tours', href: '/safari' },
     { name: 'Gallery', href: '/gallery' },
@@ -13,9 +13,9 @@ const Footer = () => {
   ];
 
   const contactInfo = [
-    { icon: Phone, text: '+94 123 456 789' },
-    { icon: Mail, text: 'info@shehanguesthouse.com' },
-    { icon: MapPin, text: '123 Safari Road, Wildlife Park Area' },
+    { icon: Phone, text: ['+94 75 044 7969', '+94 77 242 0455', '+94 71 762 4002 (Whatsapp)'] },
+    { icon: Mail, text: 'shehanguesthouse@gmail.com' },
+    { icon: MapPin, text: 'No. 106, Old Buttala Road, Kataragama.' },
   ];
 
   const socialLinks = [
@@ -36,12 +36,23 @@ const Footer = () => {
             className="col-span-1"
           >
             <Link to="/" className="flex items-center">
-              <Camera className="h-8 w-8 text-indigo-400" />
-              <span className="ml-2 text-xl font-bold">Shehan Guest House</span>
+              <img src={Logo} alt="Shehan Guest House Logo" className="h-12 w-auto mr-2" />
+              <span className="text-xl font-bold">Shehan Guest House</span>
             </Link>
             <p className="mt-4 text-gray-400">
               Experience luxury and adventure in the heart of nature. Your perfect safari getaway awaits.
+              <br/>
+              <br/>
+              <b>
+              Arrival Time
+              <br/>
+            Check-in 2 PM
+            <br/>
+            Check-out 12 PM
+            </b>
             </p>
+              
+              
           </motion.div>
 
           {/* Quick Links */}
@@ -76,9 +87,11 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-4">
               {contactInfo.map((info, index) => (
-                <li key={index} className="flex items-center">
-                  <info.icon className="h-5 w-5 text-indigo-400 mr-2" />
-                  <span className="text-gray-400">{info.text}</span>
+                <li key={index} className="flex items-start">
+                  <info.icon className="h-5 w-5 text-indigo-400 mr-2 mt-1" />
+                  <div className="text-gray-400">
+                    {Array.isArray(info.text) ? info.text.map((line, i) => <p key={i}>{line}</p>) : <p>{info.text}</p>}
+                  </div>
                 </li>
               ))}
             </ul>

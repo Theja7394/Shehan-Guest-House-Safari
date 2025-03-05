@@ -69,7 +69,7 @@ const Contact = () => {
               >
                 <Phone className="h-6 w-6 text-indigo-600 mb-3" />
                 <h3 className="font-semibold mb-2">Phone</h3>
-                <p className="text-gray-600">+94 123 456 789</p>
+                <p className="text-gray-600">+94 75 044 7969 <br/> +94 77 242 0455</p>
               </motion.div>
 
               <motion.div
@@ -78,7 +78,7 @@ const Contact = () => {
               >
                 <Mail className="h-6 w-6 text-indigo-600 mb-3" />
                 <h3 className="font-semibold mb-2">Email</h3>
-                <p className="text-gray-600">info@shehanguesthouse.com</p>
+                <p className="text-gray-600">shehanguesthouse@gmail.com</p>
               </motion.div>
 
               <motion.div
@@ -87,7 +87,7 @@ const Contact = () => {
               >
                 <MapPin className="h-6 w-6 text-indigo-600 mb-3" />
                 <h3 className="font-semibold mb-2">Address</h3>
-                <p className="text-gray-600">123 Safari Road, Wildlife Park Area</p>
+                <p className="text-gray-600">No. 106, Old Buttala Road, Kataragama.</p>
               </motion.div>
 
               <motion.div
@@ -96,7 +96,7 @@ const Contact = () => {
               >
                 <MessageSquare className="h-6 w-6 text-indigo-600 mb-3" />
                 <h3 className="font-semibold mb-2">WhatsApp</h3>
-                <p className="text-gray-600">+94 123 456 789</p>
+                <p className="text-gray-600">+94 71 762 4002</p>
               </motion.div>
             </div>
           </div>
