@@ -2,35 +2,48 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import { Wifi, Coffee, Bath, Wind, Users } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { BookingFormData } from '../types';
+//import DeluxeRooms from '../assets/room/DeluxeRooms.jpeg';
+//import StandardRooms from '../assets/room/StandardRooms.jpeg';
+//import BedroomLivingArea from '../assets/room/BedroomswithLivingArea.jpeg';
+import tempoty from '../assets/room/tempory.jpeg';
 
 const rooms = [
   {
     id: '1',
-    type: 'AC',
-    name: 'Luxury Suite',
+    type: 'A/C or Non A/C',
+    name: 'Deluxe Rooms',
     price: 150,
-    description: 'Spacious air-conditioned suite with modern amenities and a stunning view.',
-    images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'],
-    amenities: ['Air Conditioning', 'Free WiFi', 'Mini Bar', 'Private Bathroom', 'Room Service'],
+    description: 'Indulge in Shehan Guest House Deluxe Rooms - luxury redefined, ensuring a sophisticated and comfortable stay.',
+    images: [tempoty],
+    amenities: ['Air Conditioning or Non Air Conditioning ', 'Only 5 Persons'],
     maxOccupancy: 3,
   },
   {
     id: '2',
-    type: 'Non-AC',
-    name: 'Garden View Room',
+    type: 'A/C or Non-AC',
+    name: 'Standard Rooms',
     price: 80,
-    description: 'Comfortable room with natural ventilation and garden views.',
-    images: ['https://images.unsplash.com/photo-1598928506311-c55ded91a20c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'],
-    amenities: ['Fan', 'Free WiFi', 'Private Bathroom', 'Garden Access'],
+    description: 'Indulge in Shehan Guest House Standard Rooms - luxury redefined, ensuring a sophisticated and comfortable stay.',
+    images: [tempoty],
+    amenities: ['Air Conditioning or Non Air Conditioning', 'Only 5 Persons'],
+    maxOccupancy: 2,
+  },
+  {
+    id: '3',
+    type: 'Non-AC',
+    name: 'Bedrooms with Living Area',
+    price: 80,
+    description: 'Indulge in Shehan Guest House Bedrooms with Living Area - luxury redefined, ensuring a sophisticated and comfortable stay.',
+    images: [tempoty],
+    amenities: ['Air Conditioning or Non Air Conditioning', 'Only 5 Persons', 'Television'],
     maxOccupancy: 2,
   },
 ];
 
 const Rooms = () => {
-  const [selectedRoom, setSelectedRoom] = useState(null);
+  const [selectedRoom, setSelectedRoom] = useState<typeof rooms[0] | null>(null);
   const [bookingData, setBookingData] = useState<BookingFormData>({
     name: '',
     email: '',
@@ -62,12 +75,12 @@ const Rooms = () => {
             <motion.div
               key={room.id}
               whileHover={{ scale: 1.02 }}
-              className="bg-white rounded-lg shadow-lg overflow-hidden"
+              className="bg-white rounded-lg shadow-lg overflow-hidden "
             >
               <img
                 src={room.images[0]}
                 alt={room.name}
-                className="w-full h-64 object-cover"
+                className="w-full h-64 object-contain p-4" // Using object-contain and added padding
               />
               <div className="p-6">
                 <div className="flex justify-between items-center mb-4">
@@ -120,7 +133,7 @@ const Rooms = () => {
                   <label className="block text-sm font-medium text-gray-700">Check-in</label>
                   <DatePicker
                     selected={bookingData.checkIn}
-                    onChange={(date) => setBookingData({ ...bookingData, checkIn: date })}
+                    onChange={(date) => date && setBookingData({ ...bookingData, checkIn: date })}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                   />
                 </div>
@@ -128,7 +141,7 @@ const Rooms = () => {
                   <label className="block text-sm font-medium text-gray-700">Check-out</label>
                   <DatePicker
                     selected={bookingData.checkOut}
-                    onChange={(date) => setBookingData({ ...bookingData, checkOut: date })}
+                    onChange={(date) => setBookingData({ ...bookingData, checkOut: date || new Date() })}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                   />
                 </div>
