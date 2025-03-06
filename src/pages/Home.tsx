@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
-import GoogleReviews from '../components/GoogleReview'; 
 import { MapPin, Award, Shield, Clock, Sun, Mountain, Car, ParkingSquare, Utensils } from 'lucide-react';
 import { motion } from 'framer-motion';
+
+// Extend the Window interface to include Elfsight
+declare global {
+  interface Window {
+    Elfsight?: {
+      apps?: any[];
+      init?: () => void;
+    };
+  }
+}
 
 const places = [
   {
@@ -69,6 +78,21 @@ const Facilities = [
 ];
 
 const Home = () => {
+  useEffect(() => {
+    // Load the Elfsight script dynamically
+    const script = document.createElement('script');
+    script.src = 'https://static.elfsight.com/platform/platform.js';
+    script.async = true;
+    script.onload = () => {
+      if (window.Elfsight && !window.Elfsight?.apps?.length) {
+        if (window.Elfsight?.init) {
+          window.Elfsight.init();
+        }
+      }
+    };
+    document.body.appendChild(script);
+  }, []);
+
   return (
     <div className="overflow-x-hidden">
       <Hero />
@@ -98,44 +122,41 @@ const Home = () => {
           </div>
         </div>
       </motion.div>
-        {/* Image Section */}
 
-        <div className="relative bg-white py-16 sm:py-24">
-          <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8">
-            <div className="relative sm:py-16 lg:py-0">
-              <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-none lg:px-0">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                  className="relative overflow-hidden rounded-2xl"
-                >
-                  <img
-                    className="object-cover w-full h-96 transform transition-transform duration-300 hover:scale-105"
-                    src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
-                    alt="Luxury accommodation"
-                  />
-                </motion.div>
-              </div>
+      {/* Image Section */}
+      <div className="relative bg-white py-16 sm:py-24">
+        <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8">
+          <div className="relative sm:py-16 lg:py-0">
+            <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-none lg:px-0">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="relative overflow-hidden rounded-2xl"
+              >
+                <img
+                  className="object-cover w-full h-96 transform transition-transform duration-300 hover:scale-105"
+                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+                  alt="Luxury accommodation"
+                />
+              </motion.div>
             </div>
+          </div>
 
-            <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
-              <div className="pt-12 sm:pt-16 lg:pt-20">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                 About Us
-                </h2>
-                <div className="mt-6 space-y-6 text-gray-500">
-                  <p className="text-lg leading-7">
+          <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+            <div className="pt-12 sm:pt-16 lg:pt-20">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                About Us
+              </h2>
+              <div className="mt-6 space-y-6 text-gray-500">
+                <p className="text-lg leading-7">
                   The Guest House is located 100m from kiriwehera in the scenic landscape of the Kataragama pooja ground, three and a half hours from Colombo.You can reach the guest house through multiple transfer options, enquire with our team to create a tailored solution for you.
-                  </p>
-                  
-                </div>
+                </p>
               </div>
             </div>
           </div>
         </div>
-      
-      
+      </div>
 
       {/* What's Nearby Section */}
       <motion.div 
@@ -144,8 +165,6 @@ const Home = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
-
-        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
@@ -198,7 +217,7 @@ const Home = () => {
         transition={{ duration: 1 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <GoogleReviews />
+          <div className="elfsight-app-745c18f8-28bc-4e2b-9b05-1f539c17c335" data-elfsight-app-lazy></div>
         </div>
       </motion.div>
 
