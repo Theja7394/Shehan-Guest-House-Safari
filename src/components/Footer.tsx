@@ -19,7 +19,7 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#' },
+    { icon: Facebook, href: 'https://web.facebook.com/shehanguest/?_rdc=1&_rdr#' },
     { icon: Instagram, href: '#' },
     { icon: Twitter, href: '#' },
   ];
