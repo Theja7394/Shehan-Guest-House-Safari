@@ -180,10 +180,10 @@ const Rooms = () => {
                       alt={room.name}
                       className="w-full h-64 object-cover cursor-pointer"
                       onClick={() => openImageViewer(room, currentImageIndexes[room.id])}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.5 }}
+                      initial={{ x: 100 }}
+                      animate={{ x: 0 }}
+                      exit={{ x: -100 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
                   </AnimatePresence>
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center space-x-4">
@@ -285,7 +285,7 @@ const Rooms = () => {
 
                 <motion.div
                   initial={{ scale: 0.9 }}
-                  animate={{ scale: 1 }}
+                  animate={{ scale: 0 }}
                   exit={{ scale: 0.9 }}
                   className="relative"
                   onClick={(e) => e.stopPropagation()}
