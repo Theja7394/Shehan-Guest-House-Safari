@@ -1,18 +1,39 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, MessageSquare } from 'lucide-react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const Contact = () => {
-  const mapContainerStyle = {
-    width: '100%',
-    height: '400px',
-  };
 
-  const center = {
-    lat: 7.2906, // Replace with actual coordinates
-    lng: 80.6337,
-  };
+
+  const contactInfo = [
+    {
+      icon: Phone,
+      title: 'Phone',
+      value: '+94 123 456 789',
+      link: 'tel:+94123456789',
+      hoverText: 'Call us',
+    },
+    {
+      icon: Mail,
+      title: 'Email',
+      value: 'shehanguesthouse@gmail.com',
+      link: 'mailto:shehanguesthouse@gmail.com',
+      hoverText: 'Send email',
+    },
+    {
+      icon: MapPin,
+      title: 'Address',
+      value: 'No. 106, Old Buttala Road, Kataragama.',
+      link: 'https://maps.app.goo.gl/D3X2UCLxyvjJoTtPA',
+      hoverText: 'Open in Google Maps',
+    },
+    {
+      icon: MessageSquare,
+      title: 'WhatsApp',
+      value: '+94 123 456 789',
+      link: 'https://wa.me/94123456789',
+      hoverText: 'Chat on WhatsApp',
+    },
+  ];
 
   return (
     <motion.div
@@ -27,30 +48,37 @@ const Contact = () => {
           <p className="text-lg text-gray-600">Get in touch with us for bookings and inquiries</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 px-6 py-8 max-w-4xl mx-auto">
           <div>
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
+            <div className="bg-white rounded-lg shadow-lg p-10">
+              <h2 className="text-2xl font-bold mb-10">Get in Touch</h2>
               <form className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Name</label>
                   <input
-                    type="text"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  />
+                      type="text"
+                      placeholder='  Enter Your Name'
+                      required
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-1 text-sm"
+                    />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Email</label>
                   <input
                     type="email"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    placeholder='  Enter Your Email'
+                    required
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-1 text-sm"
                   />
-                </div>
+                </div>  
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Message</label>
                   <textarea
                     rows={4}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    placeholder='  Enter Your Message'
+                    required
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-1 text-sm"
                   ></textarea>
                 </div>
                 <button
@@ -63,55 +91,27 @@ const Contact = () => {
             </div>
 
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="bg-white p-6 rounded-lg shadow-lg"
-              >
-                <Phone className="h-6 w-6 text-indigo-600 mb-3" />
-                <h3 className="font-semibold mb-2">Phone</h3>
-                <p className="text-gray-600">+94 75 044 7969 <br/> +94 77 242 0455</p>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="bg-white p-6 rounded-lg shadow-lg"
-              >
-                <Mail className="h-6 w-6 text-indigo-600 mb-3" />
-                <h3 className="font-semibold mb-2">Email</h3>
-                <p className="text-gray-600">shehanguesthouse@gmail.com</p>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="bg-white p-6 rounded-lg shadow-lg"
-              >
-                <MapPin className="h-6 w-6 text-indigo-600 mb-3" />
-                <h3 className="font-semibold mb-2">Address</h3>
-                <p className="text-gray-600">No. 106, Old Buttala Road, Kataragama.</p>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="bg-white p-6 rounded-lg shadow-lg"
-              >
-                <MessageSquare className="h-6 w-6 text-indigo-600 mb-3" />
-                <h3 className="font-semibold mb-2">WhatsApp</h3>
-                <p className="text-gray-600">+94 71 762 4002</p>
-              </motion.div>
+              {contactInfo.map((info) => (
+                <motion.a
+                  key={info.title}
+                  href={info.link}
+                  target={info.icon !== Phone ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-white p-6 rounded-lg shadow-lg group cursor-pointer"
+                >
+                  <info.icon className="h-6 w-6 text-indigo-600 mb-3 group-hover:text-indigo-800 transition-colors" />
+                  <h3 className="font-semibold mb-2">{info.title}</h3>
+                  <p className="text-gray-600 group-hover:text-indigo-600 transition-colors">{info.value}</p>
+                  <p className="text-sm text-indigo-600 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    {info.hoverText} →
+                  </p>
+                </motion.a>
+              ))}
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <LoadScript googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY">
-              <GoogleMap
-                mapContainerStyle={mapContainerStyle}
-                center={center}
-                zoom={15}
-              >
-                <Marker position={center} />
-              </GoogleMap>
-            </LoadScript>
-          </div>
+          
         </div>
       </div>
     </motion.div>
