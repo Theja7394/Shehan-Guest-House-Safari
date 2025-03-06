@@ -45,7 +45,7 @@ const Navbar = () => {
             <Link to="/" className="flex items-center">
               <img src={logo} alt="Shehan Guest House Logo" className="h-10 w-auto mr-2" />
               <span className={`text-xl font-bold ${scrolled ? 'text-gray-800' : 'text-white'}`}>
-                Shehan Guest House
+                Shehan Guest House & Safari
               </span>
             </Link>
           </motion.div>
