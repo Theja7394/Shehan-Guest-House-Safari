@@ -48,22 +48,22 @@ const stats = [
 const Facilities = [
   {
     name: 'Meals',
-    description: 'Capture your safari moments with our professional photography services and equipment rentals',
+    description: 'Savor delicious local and international dishes, freshly prepared to suit your taste.',
     icon: Utensils,
   },
   {
     name: 'Parking',
-    description: 'Savor authentic local cuisine and international dishes at our in-house restaurant',
+    description: 'Convenient and secure parking space available for all guests.',
     icon: ParkingSquare,
   },
   {
     name: 'Taxi Services',
-    description: 'Stay connected with high-speed fiber internet throughout the property',
+    description: 'Easy and reliable transportation for your local travel needs.',
     icon: Car,
   },
   {
     name: 'Yala Safari',
-    description: 'Stay connected with high-speed fiber internet throughout the property',
+    description: 'Experience thrilling wildlife adventures with our guided safari tours to Yala National Park.',
     icon: Mountain,
   },
 ];

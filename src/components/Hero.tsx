@@ -91,7 +91,7 @@ const Hero = () => {
               <div className="text-sm text-gray-300">Daily expeditions</div>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 text-white">
-              <div className="font-semibold">Expert Guides</div>
+              <div className="font-semibold">Friendly Customer Service</div>
               <div className="text-sm text-gray-300">Professional service</div>
             </div>
           </div>
@@ -102,3 +102,7 @@ const Hero = () => {
 };
 
 export default Hero;
+
+//in contact.tsx i want to there is phone,email,address and whatsapp
+
+//when user click on the email i want to open email when click on the address i want to open google location and when click on the whatsapp  i want to open whatsapp
